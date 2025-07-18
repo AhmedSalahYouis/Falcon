@@ -1,4 +1,4 @@
-package com.salah.falcon.ui.theme
+package com.salah.falcon.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

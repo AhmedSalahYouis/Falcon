@@ -1,4 +1,4 @@
-package com.salah.falcon.ui.theme
+package com.salah.falcon.core.designsystem.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -31,6 +31,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
+
 
 @Composable
 fun FalconTheme(
