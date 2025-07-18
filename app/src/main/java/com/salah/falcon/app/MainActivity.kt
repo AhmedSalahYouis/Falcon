@@ -1,4 +1,4 @@
-package com.salah.falcon
+package com.salah.falcon.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
