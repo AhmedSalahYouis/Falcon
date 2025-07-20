@@ -2,6 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.apolloGraphql)
+
 }
 
 android {
@@ -59,7 +63,25 @@ android {
     }
 }
 
+apollo {
+    service("service") {
+        packageName.set("com.salah.falcon")
+        introspection {
+            endpointUrl.set("https://apollo-fullstack-tutorial.herokuapp.com/graphql")
+        }
+    }
+}
+
 dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -76,8 +98,26 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
+    // Networking
+    implementation(libs.apollo)
+
+    // Paging
+    implementation(libs.androidx.paging.runtime)
+
+    // Image loading
+    implementation(libs.coil.compose)
+
+    // Tools
+    implementation(libs.kotlinx.serialization.json)
+
+    // Compose Tools
+    implementation(libs.compose.navigation)
+    implementation(libs.compose.lifecycle)
+
+
     // Logging Tools
     implementation(libs.timber)
+    implementation(libs.androidx.paging.compose.android)
 
     // Testing Tools
     testImplementation(libs.junit)

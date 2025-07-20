@@ -1,0 +1,16 @@
+query Launches($pageSize: Int, $after: String, $size: PatchSize = SMALL) {
+    launches(pageSize: $pageSize, after: $after) {
+        cursor
+        hasMore
+        launches {
+            id
+            rocket {
+                name
+            }
+            mission {
+                name
+                missionPatch(size: $size)
+            }
+        }
+    }
+}

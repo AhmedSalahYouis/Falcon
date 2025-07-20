@@ -9,11 +9,28 @@ lifecycleRuntimeKtx = "2.9.2"
 activityCompose = "1.10.1"
 composeBom = "2025.07.00"
 
+# Tools
+serialization = "1.9.0"
+
+# Compose tools
+composeNavigation = "2.9.2"
+composeLifecycle = "2.9.2"
+
+# Image loading
+coil = "2.7.0"
+
 # DI
 koin = "4.1.0"
 
+# Networking
+apollo = "3.8.6"
+
 # Logging Tools
 timber = "5.0.1"
+
+# Paging
+paging = "3.3.6"
+pagingComposeAndroid = "3.3.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,11 +52,25 @@ koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+# Tools
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+# Compose Tools
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeLifecycle" }
+# Image loading
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 # Logging Tools
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+# Networking
+apollo = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
+# Paging
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+androidx-paging-compose-android = { group = "androidx.paging", name = "paging-compose-android", version.ref = "pagingComposeAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+apolloGraphql = { id = "com.apollographql.apollo3", version.ref = "apollo" }
