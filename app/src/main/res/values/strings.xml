@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Falcon</string>
+    <string name="listing_launch_item_image_content_description">Listing launch item</string>
+    <string name="launches_screen_title">Launches</string>
+    <string name="retry_button_label">Retry</string>
+    <string name="not_connected">⚠️ You aren’t connected to the internet</string>
+    <string name="unknow_error">unknown error occurred</string>
 </resources>
