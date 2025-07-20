@@ -3,8 +3,12 @@ package com.salah.falcon.app
 import android.app.Application
 import com.salah.falcon.BuildConfig
 import com.salah.falcon.app.di.appModule
+import com.salah.falcon.app.di.dataModule
+import com.salah.falcon.app.di.domainModule
+import com.salah.falcon.app.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.core.option.viewModelScopeFactory
 import timber.log.Timber
 
 class FalconApp : Application() {
@@ -35,8 +39,14 @@ class FalconApp : Application() {
             allowOverride(false)
 
             modules(
-                appModule
+                appModule,
+                domainModule,
+                dataModule,
+                viewModelModule
             )
+            // Enable scope-based ViewModel factory
+            options(viewModelScopeFactory())
+
         }
     }
 }
