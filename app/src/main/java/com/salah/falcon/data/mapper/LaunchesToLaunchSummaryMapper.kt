@@ -16,6 +16,6 @@ class LaunchesToLaunchSummaryMapper :
 
     private fun mapMission(from: LaunchesQuery.Mission?) = Mission(
         name = from?.name ?: "",
-        imageUrl = from?.missionPatch ?: ""
+        missionPatchImageURL = from?.missionPatch ?: ""
     )
 }
