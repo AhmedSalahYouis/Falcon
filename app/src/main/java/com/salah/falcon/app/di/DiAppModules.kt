@@ -5,6 +5,8 @@ import com.salah.falcon.app.logger.ITimberLogger
 import com.salah.falcon.app.logger.TimberLogger
 import com.salah.falcon.core.data.util.ConnectivityManagerNetworkMonitor
 import com.salah.falcon.core.data.util.NetworkMonitor
+import com.salah.falcon.core.error.DataErrorProvider
+import com.salah.falcon.core.error.IDataErrorProvider
 import com.salah.falcon.data.datasource.ILaunchesRemoteDataSource
 import com.salah.falcon.data.datasource.LaunchesDataSourceImpl
 import com.salah.falcon.data.mapper.IRemoteLaunchToLaunchSummaryMapper
@@ -33,12 +35,18 @@ val appModule = module {
 }
 
 // Data Modules
+val errorModule = module {
+    single<IDataErrorProvider> {
+        DataErrorProvider()
+    }
+}
+
 val dataModule = module {
     // Mappers
     single<IRemoteLaunchToLaunchSummaryMapper> { LaunchesToLaunchSummaryMapper() }
 
     // DataSources
-    single<ILaunchesRemoteDataSource> { LaunchesDataSourceImpl(get(), get(), get()) }
+    single<ILaunchesRemoteDataSource> { LaunchesDataSourceImpl(get(), get(), get(), get()) }
 
     // Repositories
     single<ILaunchesRepository> { LaunchesRepository(get()) }

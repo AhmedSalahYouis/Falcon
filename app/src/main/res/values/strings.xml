@@ -4,5 +4,13 @@
     <string name="launches_screen_title">Launches</string>
     <string name="retry_button_label">Retry</string>
     <string name="not_connected">⚠️ You aren’t connected to the internet</string>
-    <string name="unknow_error">unknown error occurred</string>
+    <string name="unexpected_error">unknown error occurred</string>
+
+    <string name="error_network_unavailable">No internet connection. Please check your network.</string>
+    <string name="error_network_exception">Unable to connect to server. Check your connection and try again</string>
+    <string name="error_timeout">Request timed out. please try again later.</string>
+    <string name="error_http">Server error. please try again later</string>
+    <string name="error_parse">Failed to process your request. please contact support team if the problem persists</string>
+    <string name="error_generic">An unexpected error occurred. please contact support team if the problem persists</string>
+    <string name="empty_launches_message">Space is clear. No Launches at the moment</string>
 </resources>
