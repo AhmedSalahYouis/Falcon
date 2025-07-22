@@ -6,8 +6,14 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.apolloGraphql)
     alias(libs.plugins.baselineprofile)
+    alias(libs.plugins.detekt)
 
 }
+
+detekt {
+    config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
+}
+
 
 android {
     namespace = "com.salah.falcon"
@@ -130,6 +136,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     androidTestImplementation(libs.baselineprofile)
-
-
+    androidTestImplementation(libs.benchmark.junit4)
+    androidTestImplementation(libs.benchmark.runtime)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.android)
+    testImplementation(libs.mockito.inline)
 }
