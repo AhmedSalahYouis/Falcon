@@ -9,6 +9,12 @@ class GetLaunchListUseCase(
     private val launchesRepository: ILaunchesRepository,
 ) {
 
-    suspend fun invoke(): Flow<PagingData<LaunchSummary>> = launchesRepository.getLaunchesList()
+    suspend fun invoke(params: Params): Flow<PagingData<LaunchSummary>> {
+        // Domain specific business logic can be added here.
+        // For example, filtering launches based on certain criteria,
+        // transforming data, or applying specific rules before returning the data.
+        return launchesRepository.getLaunchesList(params.pageSize)
+    }
 
+    data class Params(val pageSize: Int)
 }

@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ILaunchesRepository {
     
-    suspend fun getLaunchesList(): Flow<PagingData<LaunchSummary>>
+    suspend fun getLaunchesList(pageSize: Int): Flow<PagingData<LaunchSummary>>
 }
