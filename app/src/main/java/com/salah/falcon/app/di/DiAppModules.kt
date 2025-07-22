@@ -47,7 +47,13 @@ val dataModule = module {
     single<IRemoteLaunchToLaunchDetailsMapper> { LaunchToLaunchDetailsMapper() }
 
     // DataSources
-    single<ILaunchesRemoteDataSource> { LaunchesDataSourceImpl(get(), get(), get(), get()) }
+    single<ILaunchesRemoteDataSource> { LaunchesDataSourceImpl(
+        apolloClient = get(),
+        logger = get(),
+        launchesMapper = get(),
+        launchDetailsMapper = get(),
+        dataErrorProvider = get()
+    ) }
 
     // Repositories
     single<ILaunchesRepository> { LaunchesRepository(get()) }
@@ -57,9 +63,12 @@ val domainModule = module {
     // UseCases
     single<GetLaunchListUseCase> { GetLaunchListUseCase(get()) }
 
+    single<GetLaunchDetailsUseCase> { GetLaunchDetailsUseCase(get()) }
+
 }
 
 // Presentation Modules
 val viewModelModule = module {
     viewModel { LaunchesViewModel(get()) }
+    viewModel { LaunchDetailsViewModel(get(), get()) }
 }
