@@ -44,6 +44,7 @@ val errorModule = module {
 val dataModule = module {
     // Mappers
     single<IRemoteLaunchToLaunchSummaryMapper> { LaunchesToLaunchSummaryMapper() }
+    single<IRemoteLaunchToLaunchDetailsMapper> { LaunchToLaunchDetailsMapper() }
 
     // DataSources
     single<ILaunchesRemoteDataSource> { LaunchesDataSourceImpl(get(), get(), get(), get()) }

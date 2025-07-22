@@ -4,9 +4,8 @@ import com.salah.falcon.LaunchesQuery
 import com.salah.falcon.domain.model.LaunchSummary
 import com.salah.falcon.domain.model.Mission
 
-typealias IRemoteLaunchToLaunchSummaryMapper = Mapper<LaunchesQuery.Launch, LaunchSummary>
-class LaunchesToLaunchSummaryMapper :
-    IRemoteLaunchToLaunchSummaryMapper() {
+interface IRemoteLaunchToLaunchSummaryMapper : Mapper<LaunchesQuery.Launch, LaunchSummary>
+class LaunchesToLaunchSummaryMapper : IRemoteLaunchToLaunchSummaryMapper {
 
     override fun map(from: LaunchesQuery.Launch) = LaunchSummary(
         id = from.id,
