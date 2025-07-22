@@ -5,6 +5,7 @@ import com.salah.falcon.BuildConfig
 import com.salah.falcon.app.di.appModule
 import com.salah.falcon.app.di.dataModule
 import com.salah.falcon.app.di.domainModule
+import com.salah.falcon.app.di.errorModule
 import com.salah.falcon.app.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -42,6 +43,7 @@ class FalconApp : Application() {
                 appModule,
                 domainModule,
                 dataModule,
+                errorModule,
                 viewModelModule
             )
             // Enable scope-based ViewModel factory
