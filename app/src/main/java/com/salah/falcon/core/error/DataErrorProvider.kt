@@ -3,6 +3,7 @@ package com.salah.falcon.core.error
 import com.apollographql.apollo3.exception.ApolloHttpException
 import com.apollographql.apollo3.exception.ApolloNetworkException
 import com.apollographql.apollo3.exception.ApolloParseException
+import com.salah.falcon.data.model.MapperException
 
 private const val TIMEOUT = "timeout"
 
@@ -23,6 +24,10 @@ class DataErrorProvider : IDataErrorProvider {
             throwable is ApolloHttpException -> {
                 DataError.Network.HTTP_ERROR
             }
+            
+            throwable is MapperException -> {
+                DataError.Network.PARSING_ERROR
+            }
 
             throwable is ApolloNetworkException -> {
                 DataError.Network.NETWORK_EXCEPTION
@@ -38,35 +43,3 @@ class DataErrorProvider : IDataErrorProvider {
         }
     }
 }
-//class DataErrorProvider : IDataErrorProvider {
-//
-//    override fun fromThrowable(throwable: Throwable): AppDataError.Network {
-//        return when {
-//            throwable.message?.contains(UNPROCESSABLE) == true -> {
-//                UiErrorMessage(R.string.error_network_unavailable)
-//            }
-//
-//            throwable.message?.contains(TIMEOUT, ignoreCase = true) == true -> {
-//                UiErrorMessage(R.string.error_timeout)
-//            }
-//
-//            throwable is ApolloHttpException -> {
-//                UiErrorMessage(
-//                     R.string.error_http
-//                )
-//            }
-//
-//            throwable is ApolloNetworkException -> {
-//                UiErrorMessage(R.string.error_network_exception)
-//            }
-//
-//            throwable is ApolloParseException -> {
-//                UiErrorMessage(R.string.error_parse)
-//            }
-//
-//            else -> {
-//                UiErrorMessage(R.string.error_generic)
-//            }
-//        }
-//    }
-//}
