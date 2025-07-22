@@ -9,11 +9,15 @@ import com.salah.falcon.core.error.DataErrorProvider
 import com.salah.falcon.core.error.IDataErrorProvider
 import com.salah.falcon.data.datasource.ILaunchesRemoteDataSource
 import com.salah.falcon.data.datasource.LaunchesDataSourceImpl
+import com.salah.falcon.data.mapper.IRemoteLaunchToLaunchDetailsMapper
 import com.salah.falcon.data.mapper.IRemoteLaunchToLaunchSummaryMapper
+import com.salah.falcon.data.mapper.LaunchToLaunchDetailsMapper
 import com.salah.falcon.data.mapper.LaunchesToLaunchSummaryMapper
 import com.salah.falcon.data.repository.LaunchesRepository
 import com.salah.falcon.domain.repository.ILaunchesRepository
+import com.salah.falcon.domain.usecase.GetLaunchDetailsUseCase
 import com.salah.falcon.domain.usecase.GetLaunchListUseCase
+import com.salah.falcon.presentation.launches.launchdetails.LaunchDetailsViewModel
 import com.salah.falcon.presentation.launches.listing.LaunchesViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module

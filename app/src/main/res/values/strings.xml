@@ -13,4 +13,17 @@
     <string name="error_parse">Failed to process your request. please contact support team if the problem persists</string>
     <string name="error_generic">An unexpected error occurred. please contact support team if the problem persists</string>
     <string name="empty_launches_message">Space is clear. No Launches at the moment</string>
+
+    <string name="title">Launch Details (id: %s)</string>
+    <string name="mission_image_content_description">Image for %s mission</string>
+    <string name="rocket_title">Rocket</string>
+    <string name="rocket_name_label">NAME: %s</string>
+    <string name="rocket_type_label">TYPE: %s</string>
+    <string name="rocket_id_label">ID: %s</string>
+    <string name="mission_title">Mission</string>
+    <string name="mission_name_label">NAME: %s</string>
+    <string name="site_title">Site</string>
+    <string name="not_found">Not Found. the requested data was not found in our records</string>
+
+
 </resources>
