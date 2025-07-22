@@ -37,11 +37,16 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun LaunchesScreen(
     viewModel: LaunchesViewModel = koinViewModel(),
+    navigateToDetailsScreen: (String) -> Unit
 ) {
     val state by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     ConsumeSideEffect(viewModel = viewModel) { effect ->
-
+        when (effect) {
+            is LaunchesViewModel.SideEffect.NavigateToDetailsScreen -> {
+                navigateToDetailsScreen(effect.launchId)
+            }
+        }
     }
 
     Content(

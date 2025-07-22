@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.apolloGraphql)
+    alias(libs.plugins.baselineprofile)
 
 }
 
@@ -35,9 +36,8 @@ android {
         }
 
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             isDebuggable = false
-            isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -118,6 +118,7 @@ dependencies {
     // Logging Tools
     implementation(libs.timber)
     implementation(libs.androidx.paging.compose.android)
+    implementation(libs.androidx.profileinstaller)
 
     // Testing Tools
     testImplementation(libs.junit)
@@ -125,8 +126,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    "baselineProfile"(project(":baselineprofile"))
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.baselineprofile)
 
 
 }

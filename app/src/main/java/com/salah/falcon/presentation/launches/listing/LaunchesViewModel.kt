@@ -31,7 +31,7 @@ class LaunchesViewModel(
             }
 
             is Action.OnLaunchClick -> {
-
+                sendSideEffect(SideEffect.NavigateToDetailsScreen(launchId = action.launchId))
             }
         }
     }
@@ -61,7 +61,7 @@ class LaunchesViewModel(
     }
 
     sealed interface SideEffect : MviSideEffect {
-        data object Retry : SideEffect
+        data class NavigateToDetailsScreen(val launchId: String) : SideEffect
     }
 
 }
