@@ -1,4 +1,4 @@
-package com.salah.falcon.presentation.compose
+package com.salah.falcon.core.designsystem.compose
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
