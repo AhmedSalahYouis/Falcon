@@ -22,13 +22,12 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.salah.falcon.R
 import com.salah.falcon.core.designsystem.theme.FalconTheme
-import com.salah.falcon.domain.model.LaunchSummary
-import com.salah.falcon.domain.model.Mission
+import com.salah.falcon.presentation.launches.models.LaunchSummaryUiModel
 
 @Composable
 fun LaunchItem(
     modifier: Modifier = Modifier,
-    launchDetails: LaunchSummary,
+    launchDetails: LaunchSummaryUiModel,
     onClick: () -> Unit = {},
 ) {
     val shape = RoundedCornerShape(8.dp)
@@ -48,13 +47,13 @@ fun LaunchItem(
             modifier = Modifier
                 .size(48.dp),
             model = ImageRequest.Builder(LocalContext.current)
-                .data(launchDetails.mission.imageUrl)
+                .data(launchDetails.missionPatchImageURL)
                 .crossfade(true)
                 .error(R.drawable.ic_launcher_foreground)
                 .build(),
             contentDescription = stringResource(
                 id = R.string.listing_launch_item_image_content_description,
-                launchDetails.mission.name,
+                launchDetails.missionName,
             ),
         )
         Column(
@@ -66,7 +65,7 @@ fun LaunchItem(
                 style = MaterialTheme.typography.titleLarge,
             )
             Text(
-                text = launchDetails.mission.name,
+                text = launchDetails.missionName,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 style = MaterialTheme.typography.bodyMedium,
             )
@@ -77,13 +76,11 @@ fun LaunchItem(
 @Preview(showBackground = true)
 @Composable
 private fun LaunchItemPreviewDark() {
-    val launchDetails = LaunchSummary(
-        id = "110",
-        rocketName = "Falcon 9",
-        mission = Mission(
-            name = "Starlink-15",
-            imageUrl = "https://imgur.com/E7fjUBD.png"
-        )
+    val launchDetails = LaunchSummaryUiModel(
+            id = "1",
+            rocketName = "Falcon 9",
+            missionName = "Starlink-15",
+            missionPatchImageURL = "",
     )
 
     FalconTheme(
