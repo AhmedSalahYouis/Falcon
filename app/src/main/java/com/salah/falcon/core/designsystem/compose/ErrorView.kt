@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.salah.falcon.R
+import androidx.compose.ui.platform.testTag
 
 
 @Composable
@@ -37,6 +38,7 @@ fun ErrorView(
             text = text,
             color = MaterialTheme.colorScheme.error,
             style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.testTag("ErrorView")
         )
 
         Spacer(modifier = Modifier.height(16.dp))

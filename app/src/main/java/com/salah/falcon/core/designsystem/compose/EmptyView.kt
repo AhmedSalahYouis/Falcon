@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.testTag
 
 @Composable
 fun EmptyView(
@@ -30,6 +31,7 @@ fun EmptyView(
             text = text,
             color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.bodyMedium,
+            modifier = modifier.testTag("EmptyView")
         )
     }
 }

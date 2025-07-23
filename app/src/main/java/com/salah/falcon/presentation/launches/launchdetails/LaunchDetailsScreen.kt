@@ -3,7 +3,6 @@ package com.salah.falcon.presentation.launches.launchdetails
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,6 +44,7 @@ import com.salah.falcon.presentation.launches.models.LaunchDetailsUiModel
 import com.salah.falcon.presentation.launches.models.MissionUiModel
 import com.salah.falcon.presentation.launches.models.RocketUiModel
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.ui.platform.testTag
 
 @Composable
 fun LaunchDetailsScreen(
@@ -69,6 +69,7 @@ fun LaunchDetailsScreen(
     val state by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     Content(
+        modifier = Modifier.testTag("LaunchDetailsScreen"),
         state = state,
         onAction = viewModel::handleAction,
     )
@@ -77,11 +78,12 @@ fun LaunchDetailsScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Content(
+    modifier: Modifier = Modifier,
     state: LaunchDetailsUiState,
     onAction: (LaunchDetailsViewModel.Action) -> Unit,
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         color = MaterialTheme.colorScheme.background,
     ) {
         Scaffold(

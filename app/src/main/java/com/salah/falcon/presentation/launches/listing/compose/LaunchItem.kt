@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,6 +34,7 @@ fun LaunchItem(
     val shape = RoundedCornerShape(8.dp)
     Row(
         modifier = modifier
+            .testTag("LaunchItem")
             .background(
                 color = MaterialTheme.colorScheme.secondaryContainer,
                 shape = shape,
