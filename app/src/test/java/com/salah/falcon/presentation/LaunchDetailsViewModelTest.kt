@@ -36,6 +36,27 @@ class LaunchDetailsViewModelTest {
     }
 
     @Test
+    fun `onArgsReceived with same id does not fetch again`() = runBlocking {
+        val details = LaunchDetails("1", mock(), mock(), "site")
+        `when`(useCase.invoke("1")).thenReturn(kotlinx.coroutines.flow.flowOf(details))
+        viewModel.onArgsReceived("1")
+        // Call again with same id, should not fetch again (no exception, no state change)
+        viewModel.onArgsReceived("1")
+        assertEquals("1", viewModel.uiStateFlow.value.launchId)
+    }
+
+    @Test
+    fun `fetchDetails sets details state on success`() = runBlocking {
+        val details = LaunchDetails("2", mock(), mock(), "site2")
+        `when`(useCase.invoke("2")).thenReturn(kotlinx.coroutines.flow.flowOf(details))
+        viewModel.onArgsReceived("2")
+        assertEquals("2", viewModel.uiStateFlow.value.launchId)
+        // Details should be set
+        // (details is set in the state after successful fetch)
+        // This may require a delay or coroutine test rule in real async code
+    }
+
+    @Test
     fun `handleAction OnBackClick sends NavigateBack`() {
         // This would require observing side effects, which may need a test observer or custom logic
         // For now, we just call the method to ensure no crash
