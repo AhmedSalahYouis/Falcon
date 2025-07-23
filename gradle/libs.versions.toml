@@ -1,24 +1,39 @@
 [versions]
+# Android Gradle & Kotlin
 agp = "8.11.1"
-benchmarkCommon = "1.3.4"
 kotlin = "2.2.0"
-coreKtx = "1.16.0"
+
+# Core AndroidX
+coreKtx = "1.13.1"
+lifecycleRuntimeKtx = "2.8.4"
+activityCompose = "1.9.2"
+
+# Compose
+composeBom = "2024.10.00"
+composeNavigation = "2.8.0"
+composeLifecycle = "2.8.4"
+
+# Testing
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.9.2"
-activityCompose = "1.10.1"
-composeBom = "2025.07.00"
+androidxTest = "1.6.1"
+testTracing = "1.0.0"
+androidx-test-ext-junit = "1.2.1"
+androidx-espresso-core = "3.6.1"
+robolectric = "4.15.1"
+mockito = "5.18.0"
+mockitoKotlin = "5.1.0"
+
+# Benchmark & Profiling
+benchmarkCommon = "1.2.4"
+benchmarkMacroJunit4 = "1.2.4"
+uiautomator = "2.2.0"
+profileinstaller = "1.4.1"
+baselineprofile = "1.3.4"
 
 # Tools
 serialization = "1.9.0"
-
-# Compose tools
-composeNavigation = "2.9.2"
-composeLifecycle = "2.9.2"
-
-# Image loading
-coil = "2.7.0"
+detekt = "1.23.8"
+timber = "5.0.1"
 
 # DI
 koin = "4.1.0"
@@ -26,34 +41,20 @@ koin = "4.1.0"
 # Networking
 apollo = "3.8.6"
 
-# Logging Tools
-timber = "5.0.1"
+# Image Loading
+coil = "2.7.0"
 
 # Paging
 paging = "3.3.6"
 pagingComposeAndroid = "3.3.6"
 
-androidxMacroBenchmark = "1.3.4"
-uiautomator = "2.3.0"
-benchmarkMacroJunit4 = "1.3.4"
-baselineprofile = "1.3.4"
-profileinstaller = "1.4.1"
-detekt = "1.23.8"
-
-robolectric = "4.15.1"
-mockito = "5.18.0"
-mockitoKotlin = "6.0.0"
-androidxTest = "1.6.1"
-
 [libraries]
-androidx-benchmark-common = { module = "androidx.benchmark:benchmark-common", version.ref = "benchmarkCommon" }
-androidx-benchmark-junit4 = { module = "androidx.benchmark:benchmark-junit4", version.ref = "benchmarkCommon" }
+# Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -62,46 +63,58 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-# DI
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
-koin-core = { module = "io.insert-koin:koin-core" }
-koin-android = { module = "io.insert-koin:koin-android" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
-# Tools
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
-# Compose Tools
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
 compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeLifecycle" }
-# Image loading
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-# Logging Tools
+
+# Logging
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
 # Networking
 apollo = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
+
 # Paging
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
 androidx-paging-compose-android = { group = "androidx.paging", name = "paging-compose-android", version.ref = "pagingComposeAndroid" }
 
-baselineprofile = { group = "androidx.baselineprofile", name = "baselineprofile", version.ref = "androidxMacroBenchmark" }
-androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+# Image Loading
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+# Benchmark & Profiling
+androidx-benchmark-common = { module = "androidx.benchmark:benchmark-common", version.ref = "benchmarkCommon" }
+androidx-benchmark-junit4 = { module = "androidx.benchmark:benchmark-junit4", version.ref = "benchmarkCommon" }
 androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
 
+# DI (Koin)
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+
+# Serialization
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTest" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTest" }
+androidx-test-monitor = { module = "androidx.test:monitor", version.ref = "androidxTest" }
+#androidx-test-tracing = { module = "androidx.test:tracing", version = "testTracing" }
+
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso-core" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
-androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTest" }
-
-# Mockito Kotlin wrapper (for better Kotlin APIs)
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
 
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-test = { id = "com.android.test", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 apolloGraphql = { id = "com.apollographql.apollo3", version.ref = "apollo" }
-android-test = { id = "com.android.test", version.ref = "agp" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

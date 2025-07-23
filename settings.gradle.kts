@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Falcon"
 include(":app")
-include(":baselineProfile")
+include(":benchmark")

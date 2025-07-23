@@ -41,10 +41,18 @@ android {
             )
         }
 
+        create("benchmark") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks.add("release")
+            // Only use benchmark Proguard rules
+            proguardFiles("benchmarks-rules.pro")
+        }
+
         release {
             isMinifyEnabled = true
             isDebuggable = false
-            isShrinkResources = false
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -128,18 +136,21 @@ dependencies {
 
     // Testing Tools
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+//    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-//    implementation(project(":baselineProfile"))
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.monitor)
+
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.uiautomator)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    androidTestImplementation(libs.baselineprofile)
     testImplementation(libs.robolectric)
     androidTestImplementation(libs.mockito.android)
     testImplementation(libs.mockito.kotlin)
-    androidTestImplementation(libs.androidx.test.core)
     // Core common runtime
     implementation(libs.androidx.benchmark.common)
 
