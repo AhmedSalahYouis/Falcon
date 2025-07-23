@@ -132,14 +132,22 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    "baselineProfile"(project(":baselineprofile"))
+//    implementation(project(":baselineProfile"))
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     androidTestImplementation(libs.baselineprofile)
-    androidTestImplementation(libs.benchmark.junit4)
-    androidTestImplementation(libs.benchmark.runtime)
     testImplementation(libs.robolectric)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.android)
-    testImplementation(libs.mockito.inline)
+    androidTestImplementation(libs.mockito.android)
+    testImplementation(libs.mockito.kotlin)
+    androidTestImplementation(libs.androidx.test.core)
+    // Core common runtime
+    implementation(libs.androidx.benchmark.common)
+
+    // For micro-benchmark tests in androidTest
+    androidTestImplementation(libs.androidx.benchmark.junit4)
+
+    // For macro-benchmark tests in a dedicated module
+    androidTestImplementation(libs.androidx.benchmark.macro.junit4)
+
+
 }

@@ -1,5 +1,6 @@
 [versions]
 agp = "8.11.1"
+benchmarkCommon = "1.3.4"
 kotlin = "2.2.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -33,7 +34,6 @@ paging = "3.3.6"
 pagingComposeAndroid = "3.3.6"
 
 androidxMacroBenchmark = "1.3.4"
-androidxBenchmark = "1.3.4"
 uiautomator = "2.3.0"
 benchmarkMacroJunit4 = "1.3.4"
 baselineprofile = "1.3.4"
@@ -41,9 +41,13 @@ profileinstaller = "1.4.1"
 detekt = "1.23.8"
 
 robolectric = "4.15.1"
-mockito = "5.2.0"
+mockito = "5.18.0"
+mockitoKotlin = "6.0.0"
+androidxTest = "1.6.1"
 
 [libraries]
+androidx-benchmark-common = { module = "androidx.benchmark:benchmark-common", version.ref = "benchmarkCommon" }
+androidx-benchmark-junit4 = { module = "androidx.benchmark:benchmark-junit4", version.ref = "benchmarkCommon" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -79,17 +83,18 @@ androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", 
 androidx-paging-compose-android = { group = "androidx.paging", name = "paging-compose-android", version.ref = "pagingComposeAndroid" }
 
 baselineprofile = { group = "androidx.baselineprofile", name = "baselineprofile", version.ref = "androidxMacroBenchmark" }
-benchmark-Junit4 = { group = "androidx.benchmark", name = "benchmark-junit4", version.ref = "androidxBenchmark" }
-benchmark-runtime = { group = "androidx.benchmark", name = "benchmark-runtime", version.ref = "androidxBenchmark" }
 androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
 androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
 
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
-mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockito" }
-mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito" }
+mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTest" }
 
+# Mockito Kotlin wrapper (for better Kotlin APIs)
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
