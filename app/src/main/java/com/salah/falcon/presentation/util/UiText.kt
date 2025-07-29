@@ -10,7 +10,7 @@ sealed class UiText {
     @Composable
     fun asString(): String {
         return when (this) {
-            is StringResource -> LocalContext.current.getString(resId, *args)
+            is StringResource -> LocalContext.current.getString(resId, args)
         }
 
     }

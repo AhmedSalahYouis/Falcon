@@ -11,7 +11,10 @@ class LaunchesRepository(
     private val remoteDataSource: ILaunchesRemoteDataSource,
 ) : ILaunchesRepository {
 
-    override suspend fun getLaunchesList(pageSize: Int): Flow<PagingData<LaunchSummary>> = remoteDataSource.getLaunchList(pageSize)
-    override suspend fun getLaunchDetails(id: String): LaunchDetails = remoteDataSource.getLaunchDetails(id)
+    override suspend fun getLaunchesList(pageSize: Int): Flow<PagingData<LaunchSummary>> =
+        remoteDataSource.getLaunchList(pageSize)
+
+    override suspend fun getLaunchDetails(id: String): LaunchDetails =
+        remoteDataSource.getLaunchDetails(id)
 
 }

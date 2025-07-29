@@ -36,7 +36,9 @@ class FalconApp : Application() {
     private fun initDi() {
         startKoin {
             androidContext(this@FalconApp)
-            // If you mistakenly define the same dependency multiple times, Koin will fail fast during startup, making it easier to identify and fix the issue
+            // If you mistakenly define the same dependency multiple times,
+            // Koin will fail fast during startup,
+            // making it easier to identify and fix the issue
             allowOverride(false)
 
             modules(
