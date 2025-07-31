@@ -19,6 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
+import androidx.paging.LoadStates
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.salah.falcon.R
@@ -62,7 +63,8 @@ private fun Content(
     onAction: (LaunchesViewModel.Action) -> Unit
 ) {
     val lazyLaunchesList = state.launches.collectAsLazyPagingItems()
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior =
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -83,13 +85,14 @@ private fun Content(
 
             when {
                 lazyLaunchesList.loadState.refresh is LoadState.Loading -> {
-                    ProgressView(modifier = Modifier.padding(scaffoldPaddings))
+                    ProgressView()
                 }
 
                 lazyLaunchesList.loadState.refresh is LoadState.Error -> {
                     val error = lazyLaunchesList.loadState.refresh as LoadState.Error
-                    val errorMessage = (error.error as? DataErrorException)?.error?.toUiText()?.asString()
-                        ?: stringResource(R.string.unexpected_error)
+                    val errorMessage =
+                        (error.error as? DataErrorException)?.error?.toUiText()?.asString()
+                            ?: stringResource(R.string.unexpected_error)
 
                     ErrorView(
                         modifier = Modifier.padding(scaffoldPaddings),
@@ -144,10 +147,17 @@ private fun ContentPreviewLight() {
     ) {
         Content(
             state = LaunchesUiState(
-                launches = flowOf(PagingData.from(launches)),
+                launches = flowOf(
+                    PagingData.from(
+                        launches, LoadStates(
+                            refresh = LoadState.NotLoading(false),
+                            prepend = LoadState.NotLoading(false),
+                            append = LoadState.NotLoading(false)
+                        )
+                    ),
+                )
             ),
             onAction = {}
         )
     }
 }
-
