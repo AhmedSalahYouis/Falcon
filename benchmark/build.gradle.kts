@@ -17,9 +17,7 @@ android {
 
     configurations.all {
         resolutionStrategy {
-            force("androidx.test:core:1.5.0")
-            force("androidx.test:runner:1.5.0")
-            force("androidx.test:monitor:1.5.0")
+            force("androidx.test:monitor:1.7.2")
         }
     }
 

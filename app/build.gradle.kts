@@ -29,6 +29,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    configurations.all {
+        resolutionStrategy {
+            force("androidx.test:monitor:1.7.2")
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
@@ -37,7 +43,8 @@ android {
             isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
+                "proguard-test-rules.pro"
             )
         }
 
@@ -64,6 +71,9 @@ android {
             // Ensure Baseline Profile is fresh for release builds.
         }
     }
+
+    // Test-specific configuration to prevent ProGuard issues
+    testBuildType = "debug"
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -74,6 +84,13 @@ android {
     buildFeatures {
         buildConfig = true
         compose = true
+    }
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("META-INF/LICENSE.md")
+            excludes.add("META-INF/LICENSE-notice.md")
+        }
     }
 }
 
@@ -136,13 +153,18 @@ dependencies {
 
     // Testing Tools
     testImplementation(libs.junit)
-//    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.monitor)
+//    androidTestImplementation(libs.compose.ui.test)
+
+    androidTestImplementation(libs.mockk.android)
+//    androidTestImplementation(libs.kotlinx.coroutines.test)
+//    androidTestImplementation(libs.turbine)
+//    androidTestImplementation(libs.paging.testing)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.uiautomator)
