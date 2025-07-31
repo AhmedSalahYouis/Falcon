@@ -15,10 +15,6 @@
 -keep class io.mockk.** { *; }
 -keep class kotlin.reflect.** { *; }
 
-# Keep all test classes
--keep class * extends androidx.test.ext.junit.runners.AndroidJUnit4 { *; }
--keep class * extends org.junit.Test { *; }
-
 # Keep all annotations
 -keep @interface * { *; }
 
